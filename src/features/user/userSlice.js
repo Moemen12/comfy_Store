@@ -20,6 +20,7 @@ const initialState = {
   user: {
     username: getUserFromLocalStorage(),
   },
+
   theme: getThemeFromLocalStorage(),
 };
 
