@@ -4,6 +4,7 @@
 
 <ul>
   <li>React Js</li>
+  <li>Redux</li>
   <li>React Query</li>
   <li>React Router 6.4</li>
   <li>Axios</li>
