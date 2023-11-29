@@ -22,4 +22,6 @@
 
 ![alt text](https://github.com/Moemen12/comfy_Store/blob/main/project_images/checkout.png)
 
+![alt text](https://github.com/Moemen12/comfy_Store/blob/main/project_images/orders.png)
+
 
