@@ -1,19 +1,14 @@
-import { Link, useLoaderData } from "react-router-dom";
-import {
-  customFetch,
-  formatPrice,
-  generateAmountOptions,
-} from "../utils/index";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "../features/cart/cartSlice";
+import { useLoaderData } from 'react-router-dom';
+import { formatPrice, customFetch, generateAmountOptions } from '../utils';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/cart/cartSlice';
 
 const singleProductQuery = (id) => {
   return {
-    queryKey: ["single", id],
-    queryFn: () => {
-      return customFetch(`/products/${id}`);
-    },
+    queryKey: ['singleProduct', id],
+    queryFn: () => customFetch(`/products/${id}`),
   };
 };
 
@@ -29,7 +24,6 @@ export const loader =
 
 const SingleProduct = () => {
   const { product } = useLoaderData();
-
   const { image, title, price, description, colors, company } =
     product.attributes;
   const dollarsAmount = formatPrice(price);
@@ -59,45 +53,45 @@ const SingleProduct = () => {
 
   return (
     <section>
-      <div className="text-md breadcrumbs">
+      <div className='text-md breadcrumbs'>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <Link to='/products'>Products</Link>
           </li>
         </ul>
       </div>
       {/* PRODUCT */}
-      <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16">
+      <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
         {/* IMAGE */}
         <img
           src={image}
           alt={title}
-          className="w-96 h-96 object-cover rounded-lg lg:w-full"
+          className='w-96 h-96 object-cover rounded-lg lg:w-full'
         />
         {/* PRODUCT */}
         <div>
-          <h1 className="capitalize text-3xl font-bold">{title}</h1>
-          <h4 className="text-xl text-neutral-content font-bold mt-2">
+          <h1 className='capitalize text-3xl font-bold'>{title}</h1>
+          <h4 className='text-xl text-neutral-content font-bold mt-2'>
             {company}
           </h4>
-          <p className="mt-3 text-xl">{dollarsAmount}</p>
-          <p className="mt-6 leading-8">{description}</p>
+          <p className='mt-3 text-xl'>{dollarsAmount}</p>
+          <p className='mt-6 leading-8'>{description}</p>
           {/* COLORS */}
-          <div className="mt-6">
-            <h4 className="text-md font-medium tracking-wider capitalize">
+          <div className='mt-6'>
+            <h4 className='text-md font-medium tracking-wider capitalize'>
               colors
             </h4>
-            <div className="mt-2">
+            <div className='mt-2'>
               {colors.map((color) => {
                 return (
                   <button
                     key={color}
-                    type="button"
+                    type='button'
                     className={`badge w-6 h-6 mr-2 ${
-                      color === productColor && "border-2 border-secondary"
+                      color === productColor && 'border-2 border-secondary'
                     }`}
                     style={{ backgroundColor: color }}
                     onClick={() => setProductColor(color)}
@@ -107,15 +101,15 @@ const SingleProduct = () => {
             </div>
           </div>
           {/* AMOUNT */}
-          <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="amount">
-              <h4 className="text-md font-medium tracking-wider capitalize">
+          <div className='form-control w-full max-w-xs'>
+            <label className='label' htmlFor='amount'>
+              <h4 className='text-md font-medium -tracking-wider capitalize'>
                 amount
               </h4>
             </label>
             <select
-              className="select select-secondary select-bordered select-md"
-              id="amount"
+              className='select select-secondary select-bordered select-md'
+              id='amount'
               value={amount}
               onChange={handleAmount}
             >
@@ -123,8 +117,8 @@ const SingleProduct = () => {
             </select>
           </div>
           {/* CART BTN */}
-          <div className="mt-10">
-            <button className="btn btn-secondary btn-md" onClick={addToCart}>
+          <div className='mt-10'>
+            <button className='btn btn-secondary btn-md' onClick={addToCart}>
               Add to bag
             </button>
           </div>
@@ -133,5 +127,4 @@ const SingleProduct = () => {
     </section>
   );
 };
-
 export default SingleProduct;

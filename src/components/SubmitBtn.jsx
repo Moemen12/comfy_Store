@@ -1,29 +1,24 @@
-import PropTypes from "prop-types";
-import { useNavigation } from "react-router-dom";
+import { useNavigation } from 'react-router-dom';
 
 const SubmitBtn = ({ text }) => {
   const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
     <button
-      className="btn btn-primary uppercase btn-block"
-      type="submit"
+      type='submit'
+      className='btn btn-primary btn-block'
       disabled={isSubmitting}
     >
       {isSubmitting ? (
         <>
-          <span className="loading loading-spinner"></span>
+          <span className='loading loading-spinner'></span>
           sending...
         </>
       ) : (
-        text || "submit"
+        text || 'submit'
       )}
     </button>
   );
 };
-
-SubmitBtn.propTypes = {
-  text: PropTypes.string.isRequired,
-};
-
 export default SubmitBtn;

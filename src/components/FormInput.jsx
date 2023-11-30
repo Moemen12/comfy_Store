@@ -1,10 +1,8 @@
-import PropTypes from "prop-types";
-
 const FormInput = ({ label, name, type, defaultValue, size }) => {
   return (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text capitalize">{label}</span>
+    <div className='form-control'>
+      <label htmlFor={name} className='label'>
+        <span className='label-text capitalize'>{label}</span>
       </label>
       <input
         type={type}
@@ -15,13 +13,4 @@ const FormInput = ({ label, name, type, defaultValue, size }) => {
     </div>
   );
 };
-
-FormInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  size: PropTypes.string,
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
 export default FormInput;
